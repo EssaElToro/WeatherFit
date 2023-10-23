@@ -1,9 +1,12 @@
+import { getData } from "./getData";
+import "./style.css";
+
 type Character = {
   id: number;
   name: string;
 };
 
-type characterApiResponse = {
+type CharacterApiResponse = {
   info: {
     count: number;
     next: string;
@@ -13,55 +16,54 @@ type characterApiResponse = {
   results: Character[];
 };
 
-fetch("https://rickandmortyapi.com/api/character")
-  .then((res) => res.json())
-  .then((results: characterApiResponse) => {
-    console.log(results);
+const rootElement = document.querySelector("#app") as HTMLDivElement;
 
-    // console.log(characterNameElement);
-    for (var index in results) {
-      const characterNameElement = document.createElement("p");
-      console.log(results.results[+index]);
-      characterNameElement.innerText = results.results[0].name;
-      document.body.append(characterNameElement);
-    }
+console.log(rootElement);
 
-    // characterNameElement.innerText = results.results[0].name;
+// display h1
+const headingElement = document.createElement("h1");
+headingElement.innerText = "Rick and Morty";
+rootElement.append(headingElement);
 
-    // document.body.append(characterNameElement);
+// display search input
+const inputElement = document.createElement("input");
+const searchButtonElement = document.createElement("button");
+searchButtonElement.innerText = "Search";
+
+rootElement.append(inputElement, searchButtonElement);
+
+// display character list container
+const characterListElement = document.createElement("section");
+rootElement.append(characterListElement);
+
+searchButtonElement.addEventListener("click", () => {
+  // wyciagnij wartosc inputa
+  const characterName = inputElement.value;
+
+  getData("https://rickandmortyapi.com/api/character", {
+    name: characterName,
+  }).then((response: CharacterApiResponse) => {
+    // wyswielitc postaci wyfiltrowane
+    characterListElement.innerHTML = "";
+
+    addCharactersToContainer(response.results);
   });
+});
 
-type episode = {
-  id: number;
-  name: string;
-};
+// display list
+getData("https://rickandmortyapi.com/api/character").then(
+  (response: CharacterApiResponse) => {
+    addCharactersToContainer(response.results);
+  }
+);
 
-type episodeApiResponse = {
-  info: {
-    count: number;
-    pages: number;
-    next: string;
-    prev: null;
-  };
-  results: episode[];
-};
+function addCharactersToContainer(characters: Character[]) {
+  for (const character of characters) {
+    const characterNameElement = document.createElement("p");
+    console.log(characterNameElement);
 
-fetch("https://rickandmortyapi.com/api/episode")
-  .then((res) => res.json())
-  .then((results: episodeApiResponse) => {
-    console.log(results);
+    characterNameElement.innerText = character.name;
 
-    // const characterNameElement = document.createElement("p");
-
-    // console.log(characterNameElement);
-    for (var index in results) {
-      const characterNameElement = document.createElement("p");
-      console.log(results.results[+index]);
-      characterNameElement.innerText = results.results[0].name;
-      document.body.append(characterNameElement);
-    }
-
-    // characterNameElement.innerText = results.results[0].name;
-
-    // document.body.append(characterNameElement);
-  });
+    characterListElement.append(characterNameElement);
+  }
+}
