@@ -30,7 +30,21 @@ const inputElement = document.createElement("input");
 const searchButtonElement = document.createElement("button");
 searchButtonElement.innerText = "Search";
 
+const selectElement = document.createElement("select");
+["all", "dead", "uknown", "alive"].forEach((status) => {
+  const option = document.createElement("option");
+
+  option.innerText = status;
+  option.value = status;
+
+  selectElement.append(option);
+});
+selectElement.addEventListener("change", () => {
+  console.log("done");
+});
+
 rootElement.append(inputElement, searchButtonElement);
+rootElement.append(selectElement);
 
 // display character list container
 const characterListElement = document.createElement("section");
