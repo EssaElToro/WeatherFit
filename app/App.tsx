@@ -1,39 +1,27 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Pressable, Button } from "react-native";
-import React from "react";
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Outfitsscreen from "./components/outfits";
+import profilescreen from "./components/profile";
+import weatherscreen from "./components/weather";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.bitmojiContainer}></View>
-      <View style={styles.buttonContainer}>
-        <Button title="Weather" onPress={() => {}} />
-        <Pressable style={{ flex: 1 }} onPress={() => {}}>
-          <Text>addada</Text>
-        </Pressable>
-        <Button title="Profile" onPress={() => {}} />
-      </View>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Outfits">
+        <Stack.Screen
+          name="Outfits"
+          options={{ title: "Outfits" }}
+          component={Outfitsscreen}
+        />
+        <Stack.Screen name="Profile" component={profilescreen} />
+        <Stack.Screen name="Weather" component={weatherscreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-  buttonContainer: {
-    flexGrow: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "90%",
-    marginBottom: 20,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-  bitmojiContainer: {
-    flexGrow: 100,
-  },
-});
+export default App;
