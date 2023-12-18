@@ -36,15 +36,15 @@ const Profilescreen: React.FC<ProfilescreenProps> = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>Edit Profile</Text>
         </TouchableOpacity>
+      </View>
 
-        <View style={styles.button}>
-          <TouchableOpacity onPress={() => navigation.navigate("Outfits")}>
-            <Text style={styles.buttonText}>Outfits</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Weather")}>
-            <Text style={styles.buttonText}>Weather</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.button}>
+        <TouchableOpacity onPress={() => navigation.navigate("Outfits")}>
+          <Text style={styles.buttonText}>Outfits</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Weather")}>
+          <Text style={styles.buttonText}>Weather</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -88,9 +88,9 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   footer: {
+    flex: 1,
     borderTopWidth: 1,
     borderTopColor: "#ddd",
-    paddingVertical: 10,
     alignItems: "center",
   },
   button: {
@@ -98,11 +98,9 @@ const styles = StyleSheet.create({
     padding: 25,
     borderTopStartRadius: 25,
     borderTopEndRadius: 25,
-    marginBottom: 10,
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
-    marginTop: 275,
   },
   buttonE: {
     backgroundColor: "#3498db",

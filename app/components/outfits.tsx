@@ -9,6 +9,7 @@ const Outfitsscreen: React.FC<OutfitsscreenProps> = ({ navigation }) => {
   return (
     <View style={styles.Header}>
       <Text style={styles.text}>Match your outfit</Text>
+      <Text style={styles.text}>Soon...</Text>
       <View style={styles.Button}>
         <Button
           title="Weather"

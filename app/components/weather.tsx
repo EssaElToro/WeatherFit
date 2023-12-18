@@ -58,7 +58,7 @@ const Weatherscreen: React.FC<WeatherscreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {weather && (
-        <View>
+        <View style={{ flex: 1 }}>
           <Text style={styles.adress}>{weather.resolvedAddress}</Text>
           <Text style={styles.datetime}>{weather.days[0].datetime}</Text>
           <Text style={styles.temperature}>{weather.days[0].temp}°C</Text>
@@ -95,16 +95,10 @@ const Weatherscreen: React.FC<WeatherscreenProps> = ({ navigation }) => {
       )}
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => navigation.navigate("Outfits")}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate("Outfits")}>
           <Text style={styles.buttonText}>Outfits</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => navigation.navigate("Profile")}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
           <Text style={styles.buttonText}>Profile</Text>
         </TouchableOpacity>
       </View>
@@ -150,14 +144,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
-    backgroundColor: "#07AEE6",
+    padding: 20,
+    backgroundColor: "#3498db",
     borderTopStartRadius: 25,
     borderTopEndRadius: 25,
-    marginTop: 60,
   },
   buttonText: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 16,
     color: "white",
   },
   otherDays: {
