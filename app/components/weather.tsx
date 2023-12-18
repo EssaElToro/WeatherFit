@@ -116,41 +116,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#07AEE6",
+    backgroundColor: "white",
+    // #07AEE6
   },
   adress: {
     fontSize: 35,
     fontWeight: "bold",
     marginTop: 50,
-    color: "white",
+    color: "black",
   },
   datetime: {
     fontSize: 18,
     marginBottom: 10,
-    color: "white",
+    color: "black",
   },
   temperature: {
     fontSize: 50,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "white",
+    color: "black",
   },
   temperatureM: {
     fontSize: 15,
     fontWeight: "bold",
-    color: "white",
+    color: "black",
   },
   description: {
     fontSize: 20,
-    color: "white",
+    color: "black",
     marginBottom: 10,
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
-    backgroundColor: "white",
-    padding: 10,
+    backgroundColor: "#07AEE6",
     borderTopStartRadius: 25,
     borderTopEndRadius: 25,
     marginTop: 60,
@@ -158,11 +158,11 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#07AEE6",
+    color: "white",
   },
   otherDays: {
     fontSize: 20,
-    color: "white",
+    color: "black",
     marginTop: 50,
   },
 });
